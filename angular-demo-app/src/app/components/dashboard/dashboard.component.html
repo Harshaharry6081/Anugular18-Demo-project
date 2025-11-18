@@ -1,0 +1,95 @@
+<div class="dashboard">
+  <!-- Interpolation and Property Binding Examples -->
+  <section class="welcome-section">
+    <h1 [title]="title">{{ title }}</h1>
+    <p class="welcome-text">Welcome, <span class="username">{{ userName | capitalize }}</span>!</p>
+    <p class="date-info">Current Date: {{ currentDate | date:'fullDate' }}</p>
+    <p class="price-info">Sample Price: {{ samplePrice | currency:'USD':'symbol':'1.2-2' }}</p>
+  </section>
+
+  <!-- ngIf Structural Directive Example -->
+  <section class="status-section" *ngIf="isLoggedIn">
+    <div class="status-card" appHighlight="#e3f2fd">
+      <h3>User Status</h3>
+      <p>Status: <span class="badge success">Logged In</span></p>
+      <p>Role: <span class="badge info">{{ userRole | capitalize }}</span></p>
+      <p>Click Count: <strong>{{ clickCount }}</strong></p>
+    </div>
+  </section>
+
+  <!-- Event Binding Examples -->
+  <section class="interaction-section">
+    <h3>Interactive Elements (Event Binding)</h3>
+    <div class="button-group">
+      <button 
+        class="btn primary" 
+        (click)="onButtonClick()"
+        [disabled]="clickCount >= 10">
+        Click Me! ({{ clickCount }}/10)
+      </button>
+      <button 
+        class="btn secondary" 
+        (click)="onToggleFeatures()">
+        {{ showAdvancedFeatures ? 'Hide' : 'Show' }} Advanced Features
+      </button>
+    </div>
+  </section>
+
+  <!-- ngFor Structural Directive Example -->
+  <section class="features-section">
+    <h3>Angular Concepts Progress ({{ completedFeaturesCount }}/{{ features.length }} Complete)</h3>
+    <div class="features-grid">
+      <div 
+        *ngFor="let feature of features; let i = index; let isFirst = first; let isLast = last"
+        class="feature-card"
+        [class.completed]="feature.completed"
+        [class.first]="isFirst"
+        [class.last]="isLast"
+        appHighlight="#f3e5f5">
+        <h4>{{ feature.name }}</h4>
+        <p>{{ feature.description }}</p>
+        <div class="feature-controls">
+          <span class="index">Item {{ i + 1 }}</span>
+          <label class="checkbox-container">
+            <input 
+              type="checkbox" 
+              [checked]="feature.completed"
+              (change)="onFeatureToggle(feature)">
+            <span class="checkmark"></span>
+            {{ feature.completed ? 'Completed' : 'In Progress' }}
+          </label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Advanced Features (Conditional Rendering) -->
+  <section class="advanced-section" *ngIf="showAdvancedFeatures">
+    <h3>Advanced Angular Features</h3>
+    <div class="advanced-grid">
+      <div class="card" appHighlight="#fff3e0">
+        <h4>🔧 Services & DI</h4>
+        <p>Dependency Injection and shared services</p>
+        <a routerLink="/users" class="link-btn">View Users Service →</a>
+      </div>
+      <div class="card" appHighlight="#e8f5e8">
+        <h4>🌡️ HTTP Client</h4>
+        <p>API calls and data fetching</p>
+        <a routerLink="/weather" class="link-btn">View Weather API →</a>
+      </div>
+      <div class="card" appHighlight="#f3e5f5">
+        <h4>📝 Forms & Validation</h4>
+        <p>Two-way binding with ngModel</p>
+        <a routerLink="/todo" class="link-btn">View Todo Forms →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Custom Directive Usage Example -->
+  <section class="directive-demo">
+    <h3>Custom Directive Demo</h3>
+    <p appHighlight="#ffcdd2" class="highlight-demo">
+      Hover over this text to see the custom highlight directive in action!
+    </p>
+  </section>
+</div>

@@ -1,0 +1,154 @@
+<div class="weather-container">
+  <!-- Header -->
+  <header class="weather-header">
+    <h2>🌡️ Weather Dashboard</h2>
+    <p>Demonstrating HTTP Client, Services, and Two-way Binding</p>
+  </header>
+
+  <!-- Search Section -->
+  <section class="search-section">
+    <form class="search-form" (ngSubmit)="onSearchWeather($event)">
+      <div class="search-input-group">
+        <input 
+          type="text" 
+          [(ngModel)]="cityName"
+          name="cityName"
+          placeholder="Enter city name..."
+          class="search-input"
+          [disabled]="loading">
+        <button 
+          type="button" 
+          class="clear-btn"
+          (click)="onClearInput()"
+          *ngIf="cityName">
+          ✕
+        </button>
+      </div>
+      <button 
+        type="submit" 
+        class="search-btn"
+        [disabled]="loading || !cityName.trim()">
+        {{ loading ? '🔄 Loading...' : '🔍 Search' }}
+      </button>
+    </form>
+    
+    <!-- Two-way Binding Demo -->
+    <div class="binding-demo" *ngIf="cityName">
+      <p><strong>Two-way Binding Demo:</strong> You typed: "{{ cityName }}"</p>
+    </div>
+  </section>
+
+  <!-- Quick City Selection -->
+  <section class="quick-cities">
+    <h3>Quick City Selection</h3>
+    <div class="cities-grid">
+      <button 
+        *ngFor="let city of popularCities"
+        class="city-btn"
+        [class.active]="cityName.toLowerCase() === city.toLowerCase()"
+        (click)="onCitySelect(city)"
+        appHighlight="#e3f2fd">
+        {{ city }}
+      </button>
+    </div>
+  </section>
+
+  <!-- Error State -->
+  <div class="error-state" *ngIf="error && !loading">
+    <div class="error-message">
+      <h3>⚠️ {{ error }}</h3>
+      <button class="btn primary" (click)="getWeather()">Try Again</button>
+    </div>
+  </div>
+
+  <!-- Current Weather Display -->
+  <section class="current-weather" *ngIf="currentWeather && !loading && !error">
+    <div class="weather-card" appHighlight="#f8f9ff">
+      <div class="weather-header-info">
+        <div class="weather-icon">{{ getWeatherIcon(currentWeather.description) }}</div>
+        <div class="weather-main">
+          <h2>{{ currentWeather.location | capitalize }}</h2>
+          <p class="weather-description">{{ currentWeather.description | capitalize }}</p>
+        </div>
+        <button class="refresh-btn" (click)="onRefresh()" [disabled]="loading">
+          🔄
+        </button>
+      </div>
+      
+      <div class="weather-details">
+        <div class="weather-stat" appHighlight="#fff3e0">
+          <div class="stat-icon">🌡️</div>
+          <div class="stat-content">
+            <h4>Temperature</h4>
+            <span [class]="getTemperatureClass(currentWeather.temperature)">{{ currentWeather.temperature }}°C</span>
+          </div>
+        </div>
+        
+        <div class="weather-stat" appHighlight="#e8f5e8">
+          <div class="stat-icon">💧</div>
+          <div class="stat-content">
+            <h4>Humidity</h4>
+            <span>{{ currentWeather.humidity }}%</span>
+          </div>
+        </div>
+        
+        <div class="weather-stat" appHighlight="#f3e5f5">
+          <div class="stat-icon">🌬️</div>
+          <div class="stat-content">
+            <h4>Wind Speed</h4>
+            <span>{{ currentWeather.windSpeed }} km/h</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Weather History -->
+  <section class="weather-history" *ngIf="weatherHistory.length > 0">
+    <h3>Recent Searches</h3>
+    <div class="history-grid">
+      <div 
+        *ngFor="let weather of weatherHistory; let i = index"
+        class="history-card"
+        (click)="onCitySelect(weather.location)"
+        appHighlight="#f0f8ff">
+        <div class="history-icon">{{ getWeatherIcon(weather.description) }}</div>
+        <div class="history-info">
+          <h5>{{ weather.location | capitalize }}</h5>
+          <p>{{ weather.temperature }}°C - {{ weather.description | capitalize }}</p>
+        </div>
+        <div class="history-index">#{{ i + 1 }}</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Angular Concepts Demo -->
+  <section class="concepts-demo">
+    <h3>Angular Concepts Demonstrated</h3>
+    <div class="concepts-grid">
+      <div class="concept-card" appHighlight="#ffebee">
+        <h4>🔄 Two-way Binding</h4>
+        <p>[(ngModel)] used in the search input to bind cityName property</p>
+        <code>[(ngModel)]="cityName"</code>
+      </div>
+      
+      <div class="concept-card" appHighlight="#e8f5e8">
+        <h4>🌐 HTTP Client</h4>
+        <p>WeatherService uses HttpClient to fetch data (mock API for demo)</p>
+        <code>this.http.get&lt;WeatherData&gt;(url)</code>
+      </div>
+      
+      <div class="concept-card" appHighlight="#fff3e0">
+        <h4>🔧 Services & DI</h4>
+        <p>WeatherService injected via constructor for data management</p>
+        <code>constructor(private weatherService: WeatherService)</code>
+      </div>
+      
+      <div class="concept-card" appHighlight="#f3e5f5">
+        <h4>📜 Template Forms</h4>
+        <p>Form handling with ngSubmit and form validation</p>
+        <code>(ngSubmit)="onSearchWeather($event)"</code>
+      </div>
+    </div>
+  </section>
+</div>
