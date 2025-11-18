@@ -98,11 +98,13 @@ angular-demo-app/
 
 ## 🎯 **Demo Presentation**
 
-This project includes a complete **20-minute presentation plan**:
+This project includes a complete **20-minute presentation package**:
 
-1. **📖 DEMO_PLAN.md** - Step-by-step demo guide
-2. **🎯 PRESENTATION_SLIDES.md** - Supporting presentation slides  
-3. **🔧 TROUBLESHOOTING.md** - Common issues and solutions
+1. **📖 DEMO_PLAN.md** - Complete step-by-step demo guide
+2. **📋 DEMO_FILES_GUIDE.md** - Which files to show and how to explain them
+3. **⚡ QUICK_REFERENCE.md** - Printable demo reference card
+4. **🎯 PRESENTATION_SLIDES.md** - Supporting presentation slides  
+5. **🔧 TROUBLESHOOTING.md** - Common issues and solutions
 
 ### **Demo Flow (20 minutes)**
 1. **Dashboard** (4 min) - Core concepts overview
