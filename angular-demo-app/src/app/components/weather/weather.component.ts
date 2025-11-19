@@ -17,10 +17,10 @@ export class WeatherComponent implements OnInit {
   loading = false;
   error: string | null = null;
   
-  // Two-way binding with ngModel
+
   cityName = 'New York';
   
-  // Popular cities for quick access
+
   popularCities = [
     'New York',
     'London', 
@@ -32,16 +32,16 @@ export class WeatherComponent implements OnInit {
     'Berlin'
   ];
   
-  // Weather history
+
   weatherHistory: WeatherData[] = [];
   
   constructor(private weatherService: WeatherService) { }
   
   ngOnInit(): void {
-    // Load default city weather
+
     this.getWeather();
     
-    // Subscribe to weather updates from service
+
     this.weatherService.weather$.subscribe(weather => {
       if (weather) {
         this.currentWeather = weather;
@@ -50,7 +50,7 @@ export class WeatherComponent implements OnInit {
     });
   }
   
-  // Event handler for form submission
+
   onSearchWeather(event?: Event): void {
     if (event) {
       event.preventDefault();
@@ -58,7 +58,7 @@ export class WeatherComponent implements OnInit {
     this.getWeather();
   }
   
-  // Get weather for current city
+
   getWeather(): void {
     if (!this.cityName.trim()) {
       this.error = 'Please enter a city name';
@@ -82,34 +82,34 @@ export class WeatherComponent implements OnInit {
     });
   }
   
-  // Quick city selection
+
   onCitySelect(city: string): void {
     this.cityName = city;
     this.getWeather();
   }
   
-  // Add weather to history
+
   private addToHistory(weather: WeatherData): void {
-    // Avoid duplicates
+
     const exists = this.weatherHistory.some(w => 
       w.location.toLowerCase() === weather.location.toLowerCase()
     );
     
     if (!exists) {
       this.weatherHistory.unshift(weather);
-      // Keep only last 5 searches
+
       if (this.weatherHistory.length > 5) {
         this.weatherHistory.pop();
       }
     }
   }
   
-  // Clear input
+
   onClearInput(): void {
     this.cityName = '';
   }
   
-  // Refresh current weather
+
   onRefresh(): void {
     if (this.currentWeather) {
       this.cityName = this.currentWeather.location;
@@ -117,7 +117,7 @@ export class WeatherComponent implements OnInit {
     }
   }
   
-  // Get weather icon based on description
+
   getWeatherIcon(description: string): string {
     const desc = description.toLowerCase();
     if (desc.includes('sunny') || desc.includes('clear')) return '☀️';
@@ -125,10 +125,10 @@ export class WeatherComponent implements OnInit {
     if (desc.includes('rain')) return '🌧️';
     if (desc.includes('snow')) return '❄️';
     if (desc.includes('storm')) return '⛈️';
-    return '🌤️'; // Default
+    return '🌤️';
   }
   
-  // Get temperature color class
+
   getTemperatureClass(temp: number): string {
     if (temp < 10) return 'temp-cold';
     if (temp < 20) return 'temp-cool';

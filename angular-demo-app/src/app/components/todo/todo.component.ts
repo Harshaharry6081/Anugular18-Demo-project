@@ -22,11 +22,11 @@ export interface Todo {
   styleUrl: './todo.component.css'
 })
 export class TodoComponent {
-  // Form properties
+
   newTodoTitle = '';
   newTodoDescription = '';
   newTodoPriority: 'low' | 'medium' | 'high' = 'medium';
-  // Data properties
+
   todos: Todo[] = [
     {
       id: 1,
@@ -77,7 +77,7 @@ export class TodoComponent {
       };
       this.todos.push(newTodo);
       
-      // Reset form
+
       this.newTodoTitle = '';
       this.newTodoDescription = '';
       this.newTodoPriority = 'medium';

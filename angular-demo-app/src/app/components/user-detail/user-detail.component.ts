@@ -13,8 +13,8 @@ import { HighlightDirective } from '../../directives/highlight.directive';
   styleUrl: './user-detail.component.css'
 })
 export class UserDetailComponent implements OnInit {
-  @Input() userId?: number; // Input decorator example
-  @Output() userSelected = new EventEmitter<User>(); // Output decorator example
+  @Input() userId?: number;
+  @Output() userSelected = new EventEmitter<User>();
   
   user: User | null = null;
   loading = true;
@@ -28,7 +28,7 @@ export class UserDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Get user ID from route parameters
+
     this.route.params.subscribe(params => {
       const id = params['id'];
       if (id) {
@@ -45,7 +45,7 @@ export class UserDetailComponent implements OnInit {
       next: (user) => {
         this.user = user;
         this.loading = false;
-        // Emit event (Output decorator example)
+
         this.userSelected.emit(user);
       },
       error: (error) => {

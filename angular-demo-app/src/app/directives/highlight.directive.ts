@@ -5,7 +5,7 @@ import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/
   standalone: true
 })
 export class HighlightDirective {
-  @Input() appHighlight = '#ffeb3b'; // Default highlight color
+  @Input() appHighlight = '#ffeb3b';
   @Input() defaultColor = 'transparent';
 
   constructor(
@@ -22,7 +22,7 @@ export class HighlightDirective {
   }
 
   @HostListener('click') onClick() {
-    // Add a ripple effect on click
+
     this.renderer.setStyle(this.el.nativeElement, 'transform', 'scale(0.98)');
     setTimeout(() => {
       this.renderer.setStyle(this.el.nativeElement, 'transform', 'scale(1)');

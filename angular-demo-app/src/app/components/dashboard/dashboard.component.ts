@@ -12,17 +12,17 @@ import { HighlightDirective } from '../../directives/highlight.directive';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent implements OnInit {
-  // Property binding examples
+
   title = 'Angular 18 Concepts Dashboard';
   currentDate = new Date();
   samplePrice = 199.99;
   
-  // Interpolation examples
+
   userName = 'john doe';
   isLoggedIn = true;
   userRole = 'admin';
   
-  // ngFor examples
+
   features = [
     { id: 1, name: 'Component Creation', description: 'Learn how to create reusable components', completed: true },
     { id: 2, name: 'Property Binding', description: 'Bind component properties to template', completed: true },
@@ -31,10 +31,10 @@ export class DashboardComponent implements OnInit {
     { id: 5, name: 'Pipes', description: 'Transform data display', completed: true }
   ];
   
-  // ngIf examples
+
   showAdvancedFeatures = false;
   
-  // Event binding examples
+
   clickCount = 0;
   
   constructor() { }
@@ -43,7 +43,7 @@ export class DashboardComponent implements OnInit {
     console.log('Dashboard component initialized');
   }
   
-  // Event handlers
+
   onButtonClick(): void {
     this.clickCount++;
     console.log(`Button clicked ${this.clickCount} times`);
@@ -57,7 +57,7 @@ export class DashboardComponent implements OnInit {
     feature.completed = !feature.completed;
   }
   
-  // Getter example
+
   get completedFeaturesCount(): number {
     return this.features.filter(f => f.completed).length;
   }

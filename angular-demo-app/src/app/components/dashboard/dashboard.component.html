@@ -1,5 +1,5 @@
 <div class="dashboard">
-  <!-- Interpolation and Property Binding Examples -->
+
   <section class="welcome-section">
     <h1 [title]="title">{{ title }}</h1>
     <p class="welcome-text">Welcome, <span class="username">{{ userName | capitalize }}</span>!</p>
@@ -7,7 +7,7 @@
     <p class="price-info">Sample Price: {{ samplePrice | currency:'USD':'symbol':'1.2-2' }}</p>
   </section>
 
-  <!-- ngIf Structural Directive Example -->
+
   <section class="status-section" *ngIf="isLoggedIn">
     <div class="status-card" appHighlight="#e3f2fd">
       <h3>User Status</h3>
@@ -17,7 +17,7 @@
     </div>
   </section>
 
-  <!-- Event Binding Examples -->
+
   <section class="interaction-section">
     <h3>Interactive Elements (Event Binding)</h3>
     <div class="button-group">
@@ -35,7 +35,7 @@
     </div>
   </section>
 
-  <!-- ngFor Structural Directive Example -->
+
   <section class="features-section">
     <h3>Angular Concepts Progress ({{ completedFeaturesCount }}/{{ features.length }} Complete)</h3>
     <div class="features-grid">
@@ -63,7 +63,7 @@
     </div>
   </section>
 
-  <!-- Advanced Features (Conditional Rendering) -->
+
   <section class="advanced-section" *ngIf="showAdvancedFeatures">
     <h3>Advanced Angular Features</h3>
     <div class="advanced-grid">
@@ -85,7 +85,7 @@
     </div>
   </section>
 
-  <!-- Custom Directive Usage Example -->
+
   <section class="directive-demo">
     <h3>Custom Directive Demo</h3>
     <p appHighlight="#ffcdd2" class="highlight-demo">

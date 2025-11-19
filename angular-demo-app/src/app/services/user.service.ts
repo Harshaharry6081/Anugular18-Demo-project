@@ -31,22 +31,22 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  // Get all users
+
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.apiUrl);
   }
 
-  // Get user by ID
+
   getUserById(id: number): Observable<User> {
     return this.http.get<User>(`${this.apiUrl}/${id}`);
   }
 
-  // Set selected user for component communication
+
   setSelectedUser(user: User): void {
     this.selectedUserSubject.next(user);
   }
 
-  // Get selected user
+
   getSelectedUser(): User | null {
     return this.selectedUserSubject.value;
   }

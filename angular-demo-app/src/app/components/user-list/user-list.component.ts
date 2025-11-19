@@ -50,7 +50,7 @@ export class UserListComponent implements OnInit {
     this.loadUsers();
   }
 
-  // TrackBy function for performance
+
   trackByUserId(index: number, user: User): number {
     return user.id;
   }

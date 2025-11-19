@@ -1,5 +1,5 @@
 <div class="user-detail-container">
-  <!-- Header with Navigation -->
+
   <header class="detail-header">
     <button class="btn back-btn" (click)="onBackToUsers()">
       Back to Users
@@ -9,21 +9,21 @@
     </button>
   </header>
 
-  <!-- Loading State -->
+
   <div *ngIf="loading" class="loading-state">
     <p>Loading user details...</p>
   </div>
 
-  <!-- Error State -->
+
   <div *ngIf="error && !loading" class="error-state">
     <h3>Error</h3>
     <p>{{ error }}</p>
     <button class="btn primary" (click)="onRefresh()">Try Again</button>
   </div>
 
-  <!-- User Details -->
+
   <div *ngIf="user && !loading && !error" class="user-details">
-    <!-- User Profile Card -->
+
     <div class="profile-card" appHighlight="#f8f9ff">
       <div class="profile-header">
         <div class="user-avatar">
@@ -37,7 +37,7 @@
       </div>
     </div>
 
-    <!-- Contact Information -->
+
     <div class="info-section">
       <h3>Contact Information</h3>
       <div class="info-grid">
@@ -58,7 +58,7 @@
       </div>
     </div>
 
-    <!-- Address Information -->
+
     <div class="address-section" *ngIf="user.address">
       <h3>Address</h3>
       <div class="address-card">
@@ -67,7 +67,7 @@
       </div>
     </div>
 
-    <!-- Company Information -->
+
     <div class="company-section" *ngIf="user.company">
       <h3>Company</h3>
       <div class="company-card">
